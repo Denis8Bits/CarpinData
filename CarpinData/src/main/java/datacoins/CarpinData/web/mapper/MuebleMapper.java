@@ -14,7 +14,6 @@ import java.util.List;
 public interface MuebleMapper {
 
     // Convertir Entity -> DTO
-    @Mapping(source = "Id_Mueble", target = "codigo")
     @Mapping(source = "color", target = "color")
     @Mapping(source = "tamaño", target = "tamaño")
     @Mapping(source = "estilo", target = "estilo")

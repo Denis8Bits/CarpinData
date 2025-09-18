@@ -17,19 +17,19 @@ VALUES ('Viga de roble', 'Vigas de roble macizo para estructuras pesadas', 300.0
 
 -------------------------- INSERTAR DATOS EN Tipo --------------------------
 INSERT IGNORE INTO Tipo (nombre, descripcion, estado)
-VALUES ('Puerta', 'Puertas a medida de alta calidad', 'D')
+VALUES ('Puerta', 'Puertas a medida de alta calidad', 'Activo')
 
 INSERT IGNORE INTO Tipo (nombre, descripcion, estado)
-VALUES ('Estanteria', 'Estanterias duraderas y de alta calidad', 'D')
+VALUES ('Estanteria', 'Estanterias duraderas y de alta calidad', 'Activo')
 
 INSERT IGNORE INTO Tipo (nombre, descripcion, estado)
-VALUES ('Silla', 'Sillas que aguantan hasta a dos Ricardos', 'N')
+VALUES ('Silla', 'Sillas que aguantan hasta a dos Ricardos', 'Activo')
 
 INSERT IGNORE INTO Tipo (nombre, descripcion, estado)
-VALUES ('Mesas', 'Mesas duraderas y bonitas', 'D')
+VALUES ('Mesas', 'Mesas duraderas y bonitas', 'Activo')
 
 INSERT IGNORE INTO Tipo (nombre, descripcion, estado)
-VALUES ('Escaleras', 'Madera de pino de alta calidad', 'N')
+VALUES ('Escaleras', 'Madera de pino de alta calidad', 'Activo')
 
 
 -------------------------- INSERTAR DATOS EN Mueble --------------------------

@@ -29,11 +29,12 @@ public class MaterialEntityRepository implements MaterialRepository {
     }
 
     @Override
-    public MaterialDto obtenerMaterialPorCodigo(Long codigo) {
+    public MaterialDto obtenerMaterialPorCodido(Long codigo) {
         MaterialEntity materialEntity = this.crudMaterial.findById(codigo).orElse(null);
         if (materialEntity == null) throw new MaterialNoExisteException(codigo);
         return this.materialMapper.toDto(materialEntity);
     }
+
 
     @Override
     public MaterialDto guardarMaterial(MaterialDto materialDto) {

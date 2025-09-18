@@ -13,7 +13,6 @@ import java.util.List;
 public interface TipoMapper {
 
     // Convertir Entity -> DTO
-    @Mapping(source = "id", target = "id")
     @Mapping(source = "nombre", target = "nombre")
     @Mapping(source = "descripcion", target = "descripcion")
     @Mapping(source = "estado", target = "estado")
