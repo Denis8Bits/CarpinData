@@ -1,8 +1,8 @@
-package datacoins.CarpinData.persistence.entity;
+package datacoins.CarpinData.persistence;
 
 import datacoins.CarpinData.dominio.dto.ModMaterialDto;
 import datacoins.CarpinData.dominio.dto.MaterialDto;
-import datacoins.CarpinData.dominio.dto.repository.MaterialRepository;
+import datacoins.CarpinData.dominio.repository.MaterialRepository;
 import datacoins.CarpinData.dominio.exception.MaterialNoExisteException;
 import datacoins.CarpinData.dominio.exception.MaterialYaExisteException;
 import datacoins.CarpinData.persistence.crud.CrudMaterialEntity;
