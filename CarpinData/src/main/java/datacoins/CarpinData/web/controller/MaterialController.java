@@ -48,7 +48,7 @@ public class MaterialController {
     }
 
     //eliminarMaterial
-    @DeleteMapping("{id}")
+    @DeleteMapping("{codigo}")
     public ResponseEntity<Void> eliminarMaterial(@PathVariable Long codigo) {
         this.materialService.eliminarMaterial(codigo);
         return ResponseEntity.ok().build();

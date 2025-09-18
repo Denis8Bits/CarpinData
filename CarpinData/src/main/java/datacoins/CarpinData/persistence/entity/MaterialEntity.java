@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class MaterialEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long codigo;
 
     @Column(length = 100, unique = true, nullable = false)
     private String nombre;
