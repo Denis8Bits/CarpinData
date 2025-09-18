@@ -18,10 +18,7 @@ public class TipoEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private EstadoTipo estado;
+    private String estado;
 
-    public enum EstadoTipo {
-        DISPONIBLE,
-        NO_DISPONIBLE
-    }
+
 }

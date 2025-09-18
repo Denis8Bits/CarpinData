@@ -3,6 +3,11 @@ package datacoins.CarpinData.web.controller;
 import datacoins.CarpinData.dominio.dto.ModMuebleDto;
 import datacoins.CarpinData.dominio.dto.MuebleDto;
 import datacoins.CarpinData.dominio.service.MuebleService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +17,10 @@ import java.util.List;
 
 /**
  * Controlador REST para la gestión de muebles.
- * Expone endpoints CRUD (crear, leer, actualizar, eliminar).
  */
 @RestController
 @RequestMapping("/v1/muebles")
+@Tag(name = "Muebles", description = "Operaciones CRUD para la gestión de muebles")
 public class MuebleController {
 
     private final MuebleService muebleService;
@@ -24,75 +29,81 @@ public class MuebleController {
         this.muebleService = muebleService;
     }
 
-    /**
-     * Obtiene la lista completa de muebles.
-     *
-     * @return Lista de {@link MuebleDto} con todos los muebles registrados.
-     * Respuestas:
-     * - 200: OK, devuelve la lista de muebles.
-     */
     @GetMapping
+    @Operation(
+            summary = "Obtener todos los muebles",
+            description = "Devuelve una lista con todos los muebles registrados en el sistema",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Lista de muebles obtenida con éxito")
+            }
+    )
     public ResponseEntity<List<MuebleDto>> obtenerTodo() {
         return ResponseEntity.ok(this.muebleService.obtenerTodo());
     }
 
-    /**
-     * Obtiene un mueble por su código único.
-     *
-     * @param codigo Código del mueble a buscar.
-     * @return {@link MuebleDto} con los datos del mueble.
-     * Respuestas:
-     * - 200: OK, mueble encontrado.
-     * - 400/404: Mueble no existe (capturado en ExceptionHandler).
-     */
     @GetMapping("{codigo}")
-    public ResponseEntity<MuebleDto> obtenerMueblePorCodigo(@PathVariable Long codigo) {
+    @Operation(
+            summary = "Obtener mueble por código",
+            description = "Obtiene los datos de un mueble específico por su identificador único",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Mueble encontrado exitosamente"),
+                    @ApiResponse(responseCode = "404", description = "Mueble no encontrado", content = @Content)
+            }
+    )
+    public ResponseEntity<MuebleDto> obtenerMueblePorCodigo(
+            @Parameter(description = "Código único del mueble", example = "1")
+            @PathVariable Long codigo
+    ) {
         return ResponseEntity.ok(this.muebleService.obtenerMueblePorCodigo(codigo));
     }
 
-    /**
-     * Crea un nuevo mueble.
-     *
-     * @param muebleDto Datos del mueble a registrar (validados).
-     * @return {@link MuebleDto} con los datos del mueble creado.
-     * Respuestas:
-     * - 201: Creado correctamente.
-     * - 400: Datos inválidos o mueble duplicado.
-     */
     @PostMapping
-    public ResponseEntity<MuebleDto> guardarMueble(@Valid @RequestBody MuebleDto muebleDto) {
+    @Operation(
+            summary = "Registrar nuevo mueble",
+            description = "Crea un nuevo mueble con los datos proporcionados",
+            responses = {
+                    @ApiResponse(responseCode = "201", description = "Mueble creado exitosamente"),
+                    @ApiResponse(responseCode = "400", description = "Datos inválidos o mueble duplicado", content = @Content)
+            }
+    )
+    public ResponseEntity<MuebleDto> guardarMueble(
+            @Valid @RequestBody MuebleDto muebleDto
+    ) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(this.muebleService.guardarMueble(muebleDto));
     }
 
-    /**
-     * Modifica un mueble existente.
-     *
-     * @param codigo       Código del mueble a modificar.
-     * @param modMuebleDto Datos nuevos del mueble (validados).
-     * @return {@link MuebleDto} actualizado.
-     * Respuestas:
-     * - 200: OK, mueble actualizado.
-     * - 400/404: Datos inválidos o mueble no encontrado.
-     */
     @PutMapping("{codigo}")
+    @Operation(
+            summary = "Modificar un mueble existente",
+            description = "Actualiza los datos de un mueble existente usando su código",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Mueble actualizado correctamente"),
+                    @ApiResponse(responseCode = "404", description = "Mueble no encontrado", content = @Content)
+            }
+    )
     public ResponseEntity<MuebleDto> modificarMueble(
+            @Parameter(description = "Código del mueble a modificar", example = "3")
             @PathVariable Long codigo,
-            @Valid @RequestBody ModMuebleDto modMuebleDto) {
+
+            @Valid @RequestBody ModMuebleDto modMuebleDto
+    ) {
         return ResponseEntity.ok(this.muebleService.modificarMueble(codigo, modMuebleDto));
     }
 
-    /**
-     * Elimina un mueble existente por su código.
-     *
-     * @param codigo Código del mueble a eliminar.
-     * @return 200 OK si se eliminó correctamente.
-     * Respuestas:
-     * - 200: Eliminado correctamente.
-     * - 404: Mueble no encontrado.
-     */
     @DeleteMapping("{codigo}")
-    public ResponseEntity<Void> eliminarMueble(@PathVariable Long codigo) {
+    @Operation(
+            summary = "Eliminar un mueble",
+            description = "Elimina un mueble del sistema por su código",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Mueble eliminado exitosamente"),
+                    @ApiResponse(responseCode = "404", description = "Mueble no encontrado", content = @Content)
+            }
+    )
+    public ResponseEntity<Void> eliminarMueble(
+            @Parameter(description = "Código del mueble a eliminar", example = "5")
+            @PathVariable Long codigo
+    ) {
         this.muebleService.eliminarMueble(codigo);
         return ResponseEntity.ok().build();
     }
