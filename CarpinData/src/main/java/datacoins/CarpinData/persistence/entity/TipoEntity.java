@@ -16,6 +16,6 @@ public class TipoEntity {
     @Column(length = 500)
     private String descripcion;
 
-    @Column(length = 1, nullable = false)
+    @Column(length = 150, nullable = false)
     private String estado;
 }

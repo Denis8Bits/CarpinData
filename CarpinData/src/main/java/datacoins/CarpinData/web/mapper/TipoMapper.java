@@ -28,5 +28,6 @@ public interface TipoMapper {
     @Mapping(source = "nombre", target = "nombre")
     @Mapping(source = "descripcion", target = "descripcion")
     @Mapping(source = "estado", target = "estado")
+    @Mapping(target = "id", ignore = true)
     void modificarEntityFromDto(ModTipoDto modTipoDto, @MappingTarget TipoEntity tipoEntity);
 }
