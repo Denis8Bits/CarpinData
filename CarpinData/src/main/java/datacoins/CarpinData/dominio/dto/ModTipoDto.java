@@ -15,7 +15,7 @@ public record ModTipoDto(
         @Size(max = 300, message = "La descripción no debe exceder los 300 caracteres")
         String descripcion,
 
-        @NotNull(message = "El estado del tipo es obligatorio")
+        @NotNull(message = "Es obligatorio agregar el estado del tipo")
         String estado
 ) {
 }
