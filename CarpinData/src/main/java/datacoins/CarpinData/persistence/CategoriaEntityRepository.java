@@ -58,7 +58,7 @@ public class CategoriaEntityRepository implements CategoriaRepository {
                 .orElseThrow(() -> new CategoriaNoExisteException(codigo));
 
         CategoriaEntity categoriaExistente = this.crudCategoria.findFirstByNombre(modCategoriaDto.nombre());
-        if (categoriaExistente != null && !categoriaExistente.getIdCategoria().equals(codigo)) {
+        if (categoriaExistente != null && !categoriaExistente.getId().equals(codigo)) {
             throw new CategoriaYaExisteException(modCategoriaDto.nombre());
         }
 

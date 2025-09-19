@@ -4,19 +4,21 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "Categoria")
+@Table(name = "categoria")  // Asegúrate de que el nombre coincida exactamente
 @Data
 public class CategoriaEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCategoria; // Cambiado de id_Categoria a idCategoria
+    @Column(name = "id")  // Si tu columna se llama diferente, especifícalo aquí
+    private Long id;
 
-    @Column(length = 150, unique = true, nullable = false)
+    @Column(length = 150, nullable = false)
     private String nombre;
 
-    @Column(length = 60, nullable = false)
+    @Column(length = 300)
     private String descripcion;
 
-    @Column(length = 40, nullable = false)
+    @Column(length = 50, nullable = false)
     private String estado;
 }

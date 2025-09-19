@@ -1,7 +1,7 @@
 package datacoins.CarpinData.dominio.dto;
 
 public record MuebleDto(
-        Long Id_Mueble,
+        Long id,
         String color,
         String tamaño,
         String estilo ) {

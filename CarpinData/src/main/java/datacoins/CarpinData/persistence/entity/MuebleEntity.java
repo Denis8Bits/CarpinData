@@ -9,7 +9,7 @@ import lombok.Data;
 public class MuebleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id_Mueble;
+    private Long id;
 
     @Column(length = 150, unique = true, nullable = false)
     private String color;

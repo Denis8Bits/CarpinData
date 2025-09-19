@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public record ModCategoriaDto(
-        Long codigo,
+        Long id,
 
         @NotBlank(message = "El nombre del mueble es obligatorio")
         @Size(max = 150, message = "El nombre no debe exceder los 150 caracteres")

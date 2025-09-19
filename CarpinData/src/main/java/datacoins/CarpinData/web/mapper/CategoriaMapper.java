@@ -10,24 +10,26 @@ import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {EstadoMapper.class})
+@Mapper(componentModel = "spring")
 public interface CategoriaMapper {
 
-    // Entity -> DTO
-    @Mapping(source = "estado", target = "estado", qualifiedByName = "generarEstadoString")
-    CategoriaDto toDto(CategoriaEntity entity);
-
-    // Lista de Entity -> Lista de DTO
-    List<CategoriaDto> toDto(Iterable<CategoriaEntity> entities);
-
-    // DTO -> Entity
-    @InheritInverseConfiguration
-    @Mapping(source = "estado", target = "estado", qualifiedByName = "generarEstado")
-    CategoriaEntity toEntity(CategoriaDto dto);
-
-    // Modificar Entity desde ModCategoriaDto
+    // ENTITY -> DTO
     @Mapping(source = "nombre", target = "nombre")
     @Mapping(source = "descripcion", target = "descripcion")
-    @Mapping(source = "estado", target = "estado", qualifiedByName = "generarEstado")
-    void modificarEntityFromDto(ModCategoriaDto modDto, @MappingTarget CategoriaEntity entity);
+    @Mapping(source = "estado", target = "estado")
+    public CategoriaDto toDto(CategoriaEntity entity);
+
+    // Lista de Entity -> Lista de DTO
+    public List<CategoriaDto> toDto(Iterable<CategoriaEntity> entities);
+
+    // DTO -> ENTITY
+    @InheritInverseConfiguration
+    CategoriaEntity toEntity(CategoriaDto dto);
+
+    // Modificar ENTITY con un ModCategoriaDto
+    @Mapping(source = "nombre", target = "nombre")
+    @Mapping(source = "descripcion", target = "descripcion")
+    @Mapping(source = "estado", target = "estado")
+    @Mapping(target = "id", ignore = true)  // Importante: Ignora el ID para evitar errores
+    void modificarEntityFromDto(ModCategoriaDto modCategoriaDto, @MappingTarget CategoriaEntity categoriaEntity);
 }

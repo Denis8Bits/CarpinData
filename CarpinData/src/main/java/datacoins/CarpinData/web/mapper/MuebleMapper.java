@@ -7,7 +7,6 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-
 import java.util.List;
 
 @Mapper(componentModel = "spring")
@@ -25,9 +24,10 @@ public interface MuebleMapper {
     @InheritInverseConfiguration
     MuebleEntity toEntity(MuebleDto muebleDto);
 
-    // Modificar Entity desde ModMuebleDto
+    // Modificar Entity desde ModMuebleDto - FIXED: Ignore the id field
     @Mapping(source = "color", target = "color")
     @Mapping(source = "tamaño", target = "tamaño")
     @Mapping(source = "estilo", target = "estilo")
+    @Mapping(target = "id", ignore = true)  // This is the key fix
     void modificarEntityFromDto(ModMuebleDto modMuebleDto, @MappingTarget MuebleEntity muebleEntity);
 }

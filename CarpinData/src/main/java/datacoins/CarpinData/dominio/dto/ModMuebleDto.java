@@ -1,11 +1,12 @@
 package datacoins.CarpinData.dominio.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record ModMuebleDto(
 
-        Long codigo,
+        Long id,
 
         @NotBlank(message = "El color del mueble es obligatorio")
         @Size(max = 150, message = "El color no debe exceder los 150 caracteres")
