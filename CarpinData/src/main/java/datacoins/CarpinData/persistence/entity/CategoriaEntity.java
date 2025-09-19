@@ -9,7 +9,7 @@ import lombok.Data;
 public class CategoriaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Categoria;
+    private Long idCategoria; // Cambiado de id_Categoria a idCategoria
 
     @Column(length = 150, unique = true, nullable = false)
     private String nombre;
@@ -18,6 +18,5 @@ public class CategoriaEntity {
     private String descripcion;
 
     @Column(length = 40, nullable = false)
-    private String estado;//varchar(40)
-
+    private String estado;
 }
