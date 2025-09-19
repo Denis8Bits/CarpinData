@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record MaterialDto(
-        Long id,
+        Long codigo,
         String nombre,
         String descripcion,
         BigDecimal costo,

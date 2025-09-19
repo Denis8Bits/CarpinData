@@ -24,10 +24,9 @@ public interface MuebleMapper {
     @InheritInverseConfiguration
     MuebleEntity toEntity(MuebleDto muebleDto);
 
-    // Modificar Entity desde ModMuebleDto - FIXED: Ignore the id field
     @Mapping(source = "color", target = "color")
     @Mapping(source = "tamaño", target = "tamaño")
     @Mapping(source = "estilo", target = "estilo")
-    @Mapping(target = "id", ignore = true)  // This is the key fix
+    @Mapping(target = "id", ignore = true)
     void modificarEntityFromDto(ModMuebleDto modMuebleDto, @MappingTarget MuebleEntity muebleEntity);
 }

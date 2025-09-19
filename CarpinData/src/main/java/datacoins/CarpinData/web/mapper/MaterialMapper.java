@@ -14,6 +14,7 @@ import java.util.List;
 public interface MaterialMapper {
 
     //ENTITY -> DTO
+    @Mapping(source = "codigo", target = "codigo")
     @Mapping(source = "nombre", target = "nombre")
     @Mapping(source = "descripcion", target = "descripcion")
     @Mapping(source = "costo", target = "costo")

@@ -30,6 +30,6 @@ public interface CategoriaMapper {
     @Mapping(source = "nombre", target = "nombre")
     @Mapping(source = "descripcion", target = "descripcion")
     @Mapping(source = "estado", target = "estado")
-    @Mapping(target = "id", ignore = true)  // Importante: Ignora el ID para evitar errores
+    @Mapping(target = "id", ignore = true)
     void modificarEntityFromDto(ModCategoriaDto modCategoriaDto, @MappingTarget CategoriaEntity categoriaEntity);
 }
