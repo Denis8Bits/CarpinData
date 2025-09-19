@@ -9,7 +9,6 @@ import java.time.LocalDate;
 
 public record ModMaterialDto(
 
-        @NotNull(message = "El ID es obligatorio")
         Long id,
 
         @NotBlank(message = "El nombre del material es obligatorio")
