@@ -42,7 +42,6 @@ public class MaterialEntityRepository implements MaterialRepository {
             throw new MaterialYaExisteException(materialDto.nombre());
         }
         MaterialEntity material = this.materialMapper.toEntity(materialDto);
-        material.setEstado("D");
         this.crudMaterial.save(material);
         return this.materialMapper.toDto(material);
     }
