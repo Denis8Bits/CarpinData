@@ -16,9 +16,6 @@ public class TipoEntity {
     @Column(length = 500)
     private String descripcion;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(length = 1, nullable = false)
     private String estado;
-
-
 }

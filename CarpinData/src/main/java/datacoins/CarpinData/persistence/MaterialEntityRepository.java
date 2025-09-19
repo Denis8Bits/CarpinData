@@ -1,8 +1,8 @@
-package datacoins.CarpinData.persistence.entity;
+package datacoins.CarpinData.persistence;
 
 import datacoins.CarpinData.dominio.dto.ModMaterialDto;
 import datacoins.CarpinData.dominio.dto.MaterialDto;
-import datacoins.CarpinData.dominio.dto.repository.MaterialRepository;
+import datacoins.CarpinData.dominio.repository.MaterialRepository;
 import datacoins.CarpinData.dominio.exception.MaterialNoExisteException;
 import datacoins.CarpinData.dominio.exception.MaterialYaExisteException;
 import datacoins.CarpinData.persistence.crud.CrudMaterialEntity;
@@ -29,11 +29,12 @@ public class MaterialEntityRepository implements MaterialRepository {
     }
 
     @Override
-    public MaterialDto obtenerMaterialPorCodigo(Long codigo) {
+    public MaterialDto obtenerMaterialPorCodido(Long codigo) {
         MaterialEntity materialEntity = this.crudMaterial.findById(codigo).orElse(null);
         if (materialEntity == null) throw new MaterialNoExisteException(codigo);
         return this.materialMapper.toDto(materialEntity);
     }
+
 
     @Override
     public MaterialDto guardarMaterial(MaterialDto materialDto) {

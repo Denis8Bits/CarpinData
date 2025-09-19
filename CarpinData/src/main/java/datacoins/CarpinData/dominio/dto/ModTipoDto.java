@@ -3,7 +3,6 @@ package datacoins.CarpinData.dominio.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import datacoins.CarpinData.dominio.entity.TipoEntity.EstadoTipo;
 
 public record ModTipoDto(
 
@@ -17,6 +16,6 @@ public record ModTipoDto(
         String descripcion,
 
         @NotNull(message = "El estado del tipo es obligatorio")
-        EstadoTipo estado
+        String estado
 ) {
 }

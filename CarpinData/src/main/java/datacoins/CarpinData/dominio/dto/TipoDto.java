@@ -1,7 +1,5 @@
 package datacoins.CarpinData.dominio.dto;
 
-
-
 public record TipoDto(
         Long id,
         String nombre,

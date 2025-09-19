@@ -5,7 +5,6 @@ public record MuebleDto(
         String color,
         String tamaño,
         String estilo ) {
-
 }
 
 
