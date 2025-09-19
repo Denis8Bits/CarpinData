@@ -1,11 +1,13 @@
-package datacoins.CarpinData.persistence.entity;
+package datacoins.CarpinData.persistence;
 
 import datacoins.CarpinData.dominio.dto.ModMaterialDto;
 import datacoins.CarpinData.dominio.dto.MaterialDto;
+import datacoins.CarpinData.dominio.repository.MaterialRepository;
 import datacoins.CarpinData.dominio.exception.MaterialNoExisteException;
 import datacoins.CarpinData.dominio.exception.MaterialYaExisteException;
 import datacoins.CarpinData.dominio.repository.MaterialRepository;
 import datacoins.CarpinData.persistence.crud.CrudMaterialEntity;
+import datacoins.CarpinData.persistence.entity.MaterialEntity;
 import datacoins.CarpinData.web.mapper.MaterialMapper;
 import org.springframework.stereotype.Repository;
 
@@ -33,6 +35,7 @@ public class MaterialEntityRepository implements MaterialRepository {
         if (materialEntity == null) throw new MaterialNoExisteException(codigo);
         return this.materialMapper.toDto(materialEntity);
     }
+
 
     @Override
     public MaterialDto guardarMaterial(MaterialDto materialDto) {

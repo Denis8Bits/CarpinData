@@ -1,4 +1,4 @@
 package datacoins.CarpinData.dominio.exception;
 
-public class Error {
+public record Error(String tipo, String descripcion) {
 }
