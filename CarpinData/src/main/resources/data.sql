@@ -65,5 +65,22 @@ VALUES ('Mesas', 'Categoría especializada en mesas de comedor y escritorio', 'A
 INSERT IGNORE INTO Categoria (descripcion, nombre, estado)
 VALUES ('Sillas', 'Categoría para sillas de oficina, comedor y descanso', 'ACTIVE');
 
+-------------------------- INSERTAR DATOS EN Cotizacion --------------------------
+INSERT IGNORE INTO Cotizacion (cantidad, total, descripcion)
+VALUES (10, 1200.50, 'Cotización de tablones de pino para estructura de techo');
+
+INSERT IGNORE INTO Cotizacion (cantidad, total, descripcion)
+VALUES (5, 1500.75, 'Cotización de puertas de cedro macizo con acabado fino');
+
+INSERT IGNORE INTO Cotizacion (cantidad, total, descripcion)
+VALUES (20, 850.00, 'Cotización de sillas de madera estilo clásico');
+
+INSERT IGNORE INTO Cotizacion (cantidad, total, descripcion)
+VALUES (3, 3000.00, 'Cotización de mesas grandes de comedor en roble');
+
+INSERT IGNORE INTO Cotizacion (cantidad, total, descripcion)
+VALUES (12, 2200.25, 'Cotización de estanterías modulares MDF');
+
+
 
 
