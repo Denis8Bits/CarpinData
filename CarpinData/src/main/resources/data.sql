@@ -65,5 +65,28 @@ VALUES ('Mesas', 'Categoría especializada en mesas de comedor y escritorio', 'A
 INSERT IGNORE INTO Categoria (descripcion, nombre, estado)
 VALUES ('Sillas', 'Categoría para sillas de oficina, comedor y descanso', 'ACTIVE');
 
+-------------------------- INSERTAR DATOS EN Reserva --------------------------
+INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
+VALUES ('2025-01-20', 'ACTIVA', 1, 1);
 
+INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
+VALUES ('2025-02-15', 'ACTIVA', 2, 3);
+
+INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
+VALUES ('2025-03-10', 'COMPLETADA', 3, 2);
+
+INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
+VALUES ('2025-04-05', 'CANCELADA', 4, 4);
+
+INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
+VALUES ('2025-05-12', 'ACTIVA', 5, 5);
+
+INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
+VALUES ('2025-06-18', 'PENDIENTE', 1, 2);
+
+INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
+VALUES ('2025-07-22', 'ACTIVA', 3, 4);
+
+INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
+VALUES ('2025-08-30', 'COMPLETADA', 2, 1);
 
