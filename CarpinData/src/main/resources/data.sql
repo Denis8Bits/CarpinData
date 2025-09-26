@@ -106,4 +106,3 @@ VALUES ('2025-07-22', 'ACTIVA', 3, 4);
 
 INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
 VALUES ('2025-08-30', 'COMPLETADA', 2, 1);
-
