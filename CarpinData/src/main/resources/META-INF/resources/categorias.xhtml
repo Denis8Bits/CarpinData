@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Gestión de Categorías</title>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+    <style>
+        /* ... Estilos CSS (sin cambios) ... */
+    </style>
+</h:head>
+
+<h:body>
+    <div class="flex justify-content-center align-items-start min-h-screen">
+        <div class="card w-full max-w-6xl p-5 mb-5">
+            <h:form id="formCategorias">
+                <p:growl id="growlMensajes" showDetail="true"/>
+
+                <div class="flex justify-content-center mb-5">
+                    <h1 class="text-4xl font-bold">Gestión de Categorías</h1>
+                </div>
+                <div class="flex justify-content-end mb-3">
+                    <p:commandButton value="Nueva Categoría"
+                                     icon="pi pi-plus"
+                                     actionListener="#{webCategoriaController.agregarCategoria}"
+                                     styleClass="ui-button-success p-button-lg"
+                                     update="@form"/>
+                </div>
+
+                <p:dataTable id="tablaCategorias"
+                             var="categoria"
+                             value="#{webCategoriaController.categorias}"
+                             selection="#{webCategoriaController.categoriaSeleccionada}"
+                             rowKey="#{categoria.id()}"
+                             paginator="true"
+                             rows="10"
+                             emptyMessage="No se encontraron categorías."
+                             reflow="true"
+                             styleClass="p-datatable-gridlines"
+                             widgetVar="tablaCategoriasWv">
+
+                    <p:column headerText="ID" sortBy="#{categoria.id()}" style="width: 5rem; text-align: center;"> <h:outputText value="#{categoria.id()}"/> </p:column>
+                    <p:column headerText="Nombre" sortBy="#{categoria.nombre()}"> <h:outputText value="#{categoria.nombre()}"/> </p:column>
+                    <p:column headerText="Descripción" sortBy="#{categoria.descripcion()}"> <h:outputText value="#{categoria.descripcion()}"/> </p:column>
+                    <p:column headerText="Estado" sortBy="#{categoria.estado()}" style="width: 8rem; text-align: center;">
+                        <h:outputText value="#{categoria.estado()}"
+                                      style="font-weight: bold; color: #{categoria.estado() eq 'ACTIVE' ? '#10B981' : '#EF4444'}"/>
+                    </p:column>
+
+                    <p:column headerText="Acciones" exportable="false" style="width: 10rem; text-align: center;">
+                        <p:commandButton icon="pi pi-pencil"
+                                         title="Editar"
+                                         styleClass="ui-button-warning p-mr-2"
+                                         actionListener="#{webCategoriaController.prepararEdicion(categoria)}"
+                                         update="@form"/>
+
+                        <p:commandButton icon="pi pi-trash"
+                                         title="Eliminar"
+                                         styleClass="ui-button-danger"
+                                         oncomplete="PF('confirmacionEliminar').show()"
+                                         update=":formConfirmacionEliminar:confirmacionPanel :formConfirmacionEliminar:aceptarEliminacionBtn"> <f:setPropertyActionListener value="#{categoria}" target="#{webCategoriaController.categoriaSeleccionada}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
+    </div>
+
+    <p:dialog header="#{webCategoriaController.categoriaSeleccionada eq null ? 'Crear Nueva Categoría' : 'Editar Categoría'}"
+              widgetVar="ventanaModalCategoria"
+              modal="true"
+              responsive="true"
+              fitViewport="true"
+              width="400"
+              styleClass="card">
+        <h:form id="formModalCategoria">
+            <p:panelGrid columns="1" layout="grid" styleClass="p-nogutter p-field">
+                <div class="field mb-4">
+                    <p:outputLabel for="nombre" value="Nombre:" styleClass="block font-semibold mb-2"/>
+                    <p:inputText id="nombre"
+                                 value="#{webCategoriaController.editNombre}"
+                                 required="true"
+                                 requiredMessage="El nombre es obligatorio"
+                                 styleClass="w-full p-3"
+                                 maxlength="150"/>
+                </div>
+
+                <div class="field mb-4">
+                    <p:outputLabel for="descripcion" value="Descripción:" styleClass="block font-semibold mb-2"/>
+                    <p:inputTextarea id="descripcion"
+                                     value="#{webCategoriaController.editDescripcion}"
+                                     required="true"
+                                     requiredMessage="La descripción es obligatoria"
+                                     rows="3"
+                                     styleClass="w-full p-3"
+                                     maxlength="300"/>
+                </div>
+
+                <div class="field mb-5">
+                    <p:outputLabel for="estado" value="Estado:" styleClass="block font-semibold mb-2"/>
+                    <p:selectOneMenu id="estado"
+                                     value="#{webCategoriaController.editEstado}"
+                                     required="true"
+                                     requiredMessage="El estado es obligatorio"
+                                     styleClass="w-full p-3">
+                        <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVE"/>
+                        <f:selectItem itemLabel="INACTIVO" itemValue="INACTIVE"/>
+                    </p:selectOneMenu>
+                </div>
+
+            </p:panelGrid>
+
+            <div class="flex justify-content-end gap-2 mt-4">
+                <p:commandButton value="Cancelar"
+                                 icon="pi pi-times"
+                                 actionListener="#{webCategoriaController.cancelarCategoria}"
+                                 styleClass="ui-button-outlined"
+                                 process="@this"
+                                 update="@form"/>
+                <p:commandButton value="Guardar"
+                                 icon="pi pi-check"
+                                 actionListener="#{webCategoriaController.guardarCategoria}"
+                                 styleClass="ui-button-success"
+                                 update=":formCategorias:tablaCategorias growlMensajes"
+                                 oncomplete="if (!args.validationFailed) PF('ventanaModalCategoria').hide()"/>
+            </div>
+
+        </h:form>
+    </p:dialog>
+
+    <p:confirmDialog global="true" widgetVar="confirmacionEliminar" header="Confirmación" severity="alert" styleClass="card">
+        <f:facet name="message">
+            <h:form id="formConfirmacionEliminar">
+                <p:outputPanel id="confirmacionPanel">
+                    <h:outputText value="¿Estás seguro que deseas eliminar la categoría ID: #{webCategoriaController.categoriaSeleccionada.id()} - #{webCategoriaController.categoriaSeleccionada.nombre()}?"
+                                  rendered="#{webCategoriaController.categoriaSeleccionada != null}"/>
+                </p:outputPanel>
+
+                <p:remoteCommand name="aceptarEliminacionRC"
+                                 actionListener="#{webCategoriaController.eliminarCategoria}"
+                                 update=":formCategorias:tablaCategorias growlMensajes"
+                                 oncomplete="PF('confirmacionEliminar').hide();"/>
+
+                <p:commandButton value="Sí"
+                                 id="aceptarEliminacionBtn"
+                                 styleClass="ui-confirmdialog-yes ui-button-danger mr-2"
+                                 icon="pi pi-check"
+                                 actionListener="#{webCategoriaController.eliminarCategoria}"
+                                 process="@this"
+                                 update=":formCategorias:tablaCategorias growlMensajes"
+                                 oncomplete="PF('confirmacionEliminar').hide();"
+                />
+
+                <p:commandButton value="No"
+                                 type="button"
+                                 styleClass="ui-confirmdialog-no ui-button-outlined"
+                                 icon="pi pi-times"
+                                 onclick="PF('confirmacionEliminar').hide();"/>
+            </h:form>
+        </f:facet>
+
+    </p:confirmDialog>
+
+</h:body>
+</html>
