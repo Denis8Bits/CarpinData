@@ -35,6 +35,5 @@ public interface MaterialMapper {
     @Mapping(source = "stock", target = "stock")
     @Mapping(source = "fechaIngreso", target = "fechaIngreso")
     @Mapping(source = "estado", target = "estado")
-    @Mapping(target = "id", ignore = true)
     void modificarEntityFromDto(ModMaterialDto modMaterialDto, @MappingTarget MaterialEntity materialEntity);
 }

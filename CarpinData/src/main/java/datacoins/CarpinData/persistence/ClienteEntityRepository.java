@@ -37,7 +37,7 @@ public class ClienteEntityRepository implements ClienteRepository {
 
     @Override
     public ClienteDto guardarCliente(ClienteDto clienteDto) {
-        if (this.clienteMapper)
+        return null;
     }
 
     @Override
