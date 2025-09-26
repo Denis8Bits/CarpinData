@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>CarpinData - Sistema de Gestión de Carpintería</title>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/themes/primeone-dark.css"/>
+    </h:head>
+    <h:body>
+        <div class="card">
+            <!-- Header Principal -->
+            <div class="flex justify-content-center flex-wrap card-container">
+                <div class="flex align-items-center justify-content-center w-full h-10rem bg-primary font-bold text-white border-round m-3">
+                    <div class="text-center">
+                        <h1 class="text-4xl mb-2">CarpinData</h1>
+                        <p class="text-lg">Sistema de Gestión de Carpintería - Grupo 2</p>
+                        <p class="text-sm">Denis Rafael Morales Tote • Kevin Estuardo Ramirez Aguirre • Saul de Sical Yoc</p>
+                    </div>
+                </div>
+            </div>
+
+            <h:form id="formulario-navegacion">
+                <!-- Mensaje emergente -->
+                <p:growl id="mensaje_emergente" showDetails="true"/>
+
+                <!-- Menú de Navegación Principal -->
+                <div class="card">
+                    <div class="flex justify-content-center flex-wrap card-container">
+                        <div class="flex align-items-center justify-content-center w-full h-3rem bg-yellow-500 font-bold text-gray-900 border-round m-2">
+                            <h3>Módulos del Sistema</h3>
+                        </div>
+                    </div>
+
+                    <!-- Grid de Botones de Navegación -->
+                    <div class="grid">
+                        <!-- Gestión de Categorías -->
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <div class="card border-round-lg hover:bg-primary hover:text-white transition-colors transition-duration-300">
+                                <div class="text-center p-4">
+                                    <i class="pi pi-tags text-6xl mb-3 text-primary"></i>
+                                    <h4>Gestión de Categorías</h4>
+                                    <p class="text-600 mb-3">Administrar categorías de productos</p>
+                                    <p:commandButton value="Ir a Categorías"
+                                                     icon="pi pi-arrow-right"
+                                                     class="ui-button-primary w-full"
+                                                     action="categorias?faces-redirect=true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gestión de Cotizaciones -->
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <div class="card border-round-lg hover:bg-primary hover:text-white transition-colors transition-duration-300">
+                                <div class="text-center p-4">
+                                    <i class="pi pi-calculator text-6xl mb-3 text-primary"></i>
+                                    <h4>Gestión de Cotizaciones</h4>
+                                    <p class="text-600 mb-3">Crear y gestionar cotizaciones</p>
+                                    <p:commandButton value="Ir a Cotizaciones"
+                                                     icon="pi pi-arrow-right"
+                                                     class="ui-button-primary w-full"
+                                                     action="cotizaciones?faces-redirect=true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gestión de Materiales -->
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <div class="card border-round-lg hover:bg-primary hover:text-white transition-colors transition-duration-300">
+                                <div class="text-center p-4">
+                                    <i class="pi pi-box text-6xl mb-3 text-primary"></i>
+                                    <h4>Gestión de Materiales</h4>
+                                    <p class="text-600 mb-3">Inventario y control de materiales</p>
+                                    <p:commandButton value="Ir a Materiales"
+                                                     icon="pi pi-arrow-right"
+                                                     class="ui-button-primary w-full"
+                                                     action="materiales?faces-redirect=true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gestión de Muebles -->
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <div class="card border-round-lg hover:bg-primary hover:text-white transition-colors transition-duration-300">
+                                <div class="text-center p-4">
+                                    <i class="pi pi-home text-6xl mb-3 text-primary"></i>
+                                    <h4>Gestión de Muebles</h4>
+                                    <p class="text-600 mb-3">Catálogo y gestión de muebles</p>
+                                    <p:commandButton value="Ir a Muebles"
+                                                     icon="pi pi-arrow-right"
+                                                     class="ui-button-primary w-full"
+                                                     action="muebles?faces-redirect=true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gestión de Reservas -->
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <div class="card border-round-lg hover:bg-primary hover:text-white transition-colors transition-duration-300">
+                                <div class="text-center p-4">
+                                    <i class="pi pi-calendar text-6xl mb-3 text-primary"></i>
+                                    <h4>Gestión de Reservas</h4>
+                                    <p class="text-600 mb-3">Programar y gestionar reservas</p>
+                                    <p:commandButton value="Ir a Reservas"
+                                                     icon="pi pi-arrow-right"
+                                                     class="ui-button-primary w-full"
+                                                     action="reservas?faces-redirect=true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gestión de Tipos -->
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <div class="card border-round-lg hover:bg-primary hover:text-white transition-colors transition-duration-300">
+                                <div class="text-center p-4">
+                                    <i class="pi pi-list text-6xl mb-3 text-primary"></i>
+                                    <h4>Gestión de Tipos</h4>
+                                    <p class="text-600 mb-3">Administrar tipos de productos</p>
+                                    <p:commandButton value="Ir a Tipos"
+                                                     icon="pi pi-arrow-right"
+                                                     class="ui-button-primary w-full"
+                                                     action="tipos?faces-redirect=true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gestión de Detalle Cotizaciones -->
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <div class="card border-round-lg hover:bg-primary hover:text-white transition-colors transition-duration-300">
+                                <div class="text-center p-4">
+                                    <i class="pi pi-file-edit text-6xl mb-3 text-primary"></i>
+                                    <h4>Detalle de Cotizaciones</h4>
+                                    <p class="text-600 mb-3">Gestionar detalles de cotizaciones</p>
+                                    <p:commandButton value="Ir a Detalles"
+                                                     icon="pi pi-arrow-right"
+                                                     class="ui-button-primary w-full"
+                                                     action="detallecotizaciones?faces-redirect=true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gestión de Clientes -->
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <div class="card border-round-lg hover:bg-primary hover:text-white transition-colors transition-duration-300">
+                                <div class="text-center p-4">
+                                    <i class="pi pi-users text-6xl mb-3 text-primary"></i>
+                                    <h4>Gestión de Clientes</h4>
+                                    <p class="text-600 mb-3">Administrar información de clientes</p>
+                                    <p:commandButton value="Ir a Clientes"
+                                                     icon="pi pi-arrow-right"
+                                                     class="ui-button-primary w-full"
+                                                     action="clientes?faces-redirect=true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Footer -->
+                <div class="card mt-4">
+                    <div class="text-center p-3 bg-gray-100 border-round">
+                        <p class="text-gray-600 mb-2">© 2024 CarpinData - Sistema de Gestión de Carpintería</p>
+                        <p class="text-sm text-gray-500">Desarrollado por el Grupo 2</p>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</h:html>

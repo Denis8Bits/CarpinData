@@ -105,9 +105,6 @@ INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
 VALUES ('2025-07-22', 'ACTIVA', 3, 4);
 
 INSERT IGNORE INTO reserva (fecha_Reserva, estado, id_Usuario, id_Mueble)
-<<<<<<< HEAD
-VALUES ('2025-08-30', 'COMPLETADA', 2, 1);
-=======
 VALUES ('2025-08-30', 'COMPLETADA', 2, 1);
 
 -------------------------- INSERTAR DATOS EN DetalleCotizacion --------------------------
@@ -125,4 +122,4 @@ VALUES (4, 4);
 
 INSERT IGNORE INTO Detalle_Cotizacion (id_mueble, id_cotizacion)
 VALUES (5, 5);
->>>>>>> dbc63a1a683f65ceb23a9d533d21992fa7355ff8
+
