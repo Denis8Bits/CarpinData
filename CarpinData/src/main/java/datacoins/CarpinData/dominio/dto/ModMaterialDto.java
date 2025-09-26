@@ -8,7 +8,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record ModMaterialDto(
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8488f3c51107f5ec64640cf86146263d130f2204
         Long id,
 
         @NotBlank(message = "El nombre del material es obligatorio")

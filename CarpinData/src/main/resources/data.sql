@@ -65,6 +65,7 @@ VALUES ('Mesas', 'Categoría especializada en mesas de comedor y escritorio', 'A
 INSERT IGNORE INTO Categoria (descripcion, nombre, estado)
 VALUES ('Sillas', 'Categoría para sillas de oficina, comedor y descanso', 'ACTIVE');
 
+
 -------------------------- INSERTAR DATOS EN Cotizacion --------------------------
 INSERT IGNORE INTO Cotizacion (cantidad, total, descripcion)
 VALUES (10, 1200.50, 'Cotización de tablones de pino para estructura de techo');
@@ -122,4 +123,5 @@ VALUES (4, 4);
 
 INSERT IGNORE INTO Detalle_Cotizacion (id_mueble, id_cotizacion)
 VALUES (5, 5);
+
 
