@@ -65,5 +65,3 @@ VALUES ('Mesas', 'Categoría especializada en mesas de comedor y escritorio', 'A
 INSERT IGNORE INTO Categoria (descripcion, nombre, estado)
 VALUES ('Sillas', 'Categoría para sillas de oficina, comedor y descanso', 'ACTIVE');
 
-
-
