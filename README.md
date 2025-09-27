@@ -116,6 +116,6 @@ localhost:8090/CarpinData/api/v1/materiales
         "estado": "A"
     }
 
-
+https://cetkinal-my.sharepoint.com/:f:/g/personal/kramirez-2024399_kinal_edu_gt/EqjiLWJ4hCZPgn1jnzHVKpsB58OdYZYxLDduKuS6GrTs7Q?e=yYXUgS
 -- ELIMINAR / MATERIAL: 
 localhost:8090/CarpinData/api/v1/materiales/id del material que elimine
